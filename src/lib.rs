@@ -32,7 +32,7 @@ pub fn start()->Result<(),JsValue> {
 }
 
 async fn run()->anyhow::Result<()>{
-    let ws = WebsocketIO::new("echo.websocket.org").await?;
+    let ws = WebsocketIO::new("localhost:8000").await?;
     let (mut reader, mut writer) = ws.split();
     writer.write_all(&[0, 1, 2, 3, 93]).await?;
     writer.write_all(&[42, 34, 93]).await?;
